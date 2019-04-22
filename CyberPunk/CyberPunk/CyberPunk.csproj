@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -130,6 +138,39 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Add_Features.cs" />
+    <Compile Include="Models\Add_skills.cs" />
+    <Compile Include="Models\Armors.cs" />
+    <Compile Include="Models\Bodies.cs" />
+    <Compile Include="Models\Bullets.cs" />
+    <Compile Include="Models\Cities.cs" />
+    <Compile Include="Models\Corporations.cs" />
+    <Compile Include="Models\CyberPunk2100Entities.cs" />
+    <Compile Include="Models\Dices.cs" />
+    <Compile Include="Models\Districts.cs" />
+    <Compile Include="Models\Enumgrades.cs" />
+    <Compile Include="Models\FeatureEnum.cs" />
+    <Compile Include="Models\Features.cs" />
+    <Compile Include="Models\Grades.cs" />
+    <Compile Include="Models\Languages.cs" />
+    <Compile Include="Models\PATENTS.cs" />
+    <Compile Include="Models\People.cs" />
+    <Compile Include="Models\People_Specialcapacities.cs" />
+    <Compile Include="Models\Places.cs" />
+    <Compile Include="Models\Properties.cs" />
+    <Compile Include="Models\Remove_Features.cs" />
+    <Compile Include="Models\Resources.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Roles_Skills.cs" />
+    <Compile Include="Models\Roles_Specialabilities.cs" />
+    <Compile Include="Models\SkillEnum.cs" />
+    <Compile Include="Models\Skills.cs" />
+    <Compile Include="Models\Specialabilities.cs" />
+    <Compile Include="Models\SpecialabilitiesEnum.cs" />
+    <Compile Include="Models\Spoken.cs" />
+    <Compile Include="Models\sysdiagrams.cs" />
+    <Compile Include="Models\Weaponfamilies.cs" />
+    <Compile Include="Models\Weapons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +212,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -12,6 +12,6 @@ namespace CyberPunk.ViewModels
 
         int Dice20 { get; set; }
 
-        int GetResult(int feature, int skill, int dice);
+        int GetResult(int feature, int skill);
     }
 }

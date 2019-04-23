@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CyberPunk;
 using CyberPunk.Controllers;
+using CyberPunk.ViewModels;
 
 namespace CyberPunk.Tests.Controllers
 {
@@ -49,6 +50,12 @@ namespace CyberPunk.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public void DiceTest()
+        {
+            ModelData datas = new ModelData();
+            int resultat = datas.GetResult(0, 0, 10);
         }
     }
 }

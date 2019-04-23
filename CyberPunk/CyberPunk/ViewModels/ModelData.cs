@@ -5,82 +5,86 @@ using System.Web;
 
 namespace CyberPunk.ViewModels
 {
-    public enum StateAction
-    {
-        failure = 1,
-        sucess = 0,
-        normal = 2
-    }
+
+    private const int defaultDice = 10;
+    private const int expertDice = 20;
+    private const int fightDice = 6;
+
     public class ModelData : IDiceData
     {
+        private Random _random;
         public int Dice10 { get; set; }
 
         public int Dice20 { get; set; }
 
-        public int GetResult(int feature, int skill, int dice)
+        public int GetResult(int feature, int skill, int baseDice = defaultDice)
         {
-            int baseDice = 10;
-            int resultDice = 0;
-            int dice;
+            int result = 0;
+            int d;
             bool failure = false;
+            bool first = true;
+            bool replay = false;
 
+            // Une compétences superieure à 12 fait lancer un dé de 20.
             if (skill >= 12)
             {
-                baseDice = 20;
+                baseDice = expertDice;
             }
 
             int tmp = 0;
-
-            Random rnd = new Random(baseDice);
+            _random = new Random(baseDice);
 
             do
             {
-                dice = rnd.Next();
+                d = rnd.Next();
 
                 // Relance le dé
-                switch (dice)
+                switch (d)
                 {
                     case 1:
-                        if (!failure)
+                        if (first)
                         {
                             failure = true;
-                            // TODO : Gerer la relance avec un 0
-                            tmp -= rnd.Next();
-                            
+                            replay = true;
                         }
                         else
                         {
                             tmp += 1;
+                            replay = false;
                         }
                         break;
 
                     case 0:
-                        baseDice = 0 ? tmp += 10 : tmp += 20;
+                        tmp += baseDice;
+                        replay = true;                        
                         break;
                     default:
-                        tmp += dice;
+                        tmp += d;
+                        replay = false;
                         break;
 
                 }
-
-
+                first = false;
             }
-            while (dice == baseDice);
-
-            resultDice += tmp;
-            return resultDice;
+            while (replay);
+            result = feature + skill;
+            failure = true ? result -= tmp : result += tmp;
+            return result;
         }
-        private int GetStatut(bool Failure, Random random)
-        {
-            int dice;
-            if (failure)
-            {
-                dice = random.Next();
-                if (dice == 0)
-                {
 
-                }
-            }
+        public bool UnderFeature(string feature = "CH")
+        {
+            // Pour tester valeur en dure
+            int value = 9;
+            _random = new Random(defaultDice);
+            // TODO : Recuperer la valeur de la compétence
+            int d = _random.Next();
+            return (d <= value);
+        }
+        public int GetHole()
+        {
+            // Lancement d'un dé de 100 (un dé de 10 dizaine + un dé unitaire)
+            return 0;
         }
     }
 }

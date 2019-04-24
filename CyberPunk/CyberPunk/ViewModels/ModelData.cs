@@ -56,7 +56,7 @@ namespace CyberPunk.ViewModels
 
                     case 0:
                         tmp += baseDice;
-                        replay = true;                        
+                        replay = true;
                         break;
                     default:
                         tmp += d;
@@ -84,7 +84,35 @@ namespace CyberPunk.ViewModels
         public int GetHole()
         {
             // Lancement d'un dé de 100 (un dé de 10 dizaine + un dé unitaire)
-            return 0;
+            _random = new Random(defaultDice);
+
+            return _random.Next(0, 100);
+
+        }
+
+
+
+        public void SetPointToSkill(string skillName, int newPoint)
+        {
+            using (CyberPunkEntities cyber = new CyberPunkEntities())
+            {
+                //int skillPoint = cyber.;
+
+            }
+
+            int skillYet = 15;
+            int skillAttribute = 7;
+            int multi;
+
+            if (skillPoint >= 12)
+            {
+                multi = skillAttribute * 20;
+            }
+            else
+            {
+                multi = skillAttribute * 10;            }
+
+
         }
     }
 }

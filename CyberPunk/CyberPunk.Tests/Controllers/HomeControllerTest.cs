@@ -55,7 +55,22 @@ namespace CyberPunk.Tests.Controllers
         public void DiceTest()
         {
             ModelData datas = new ModelData();
-            int resultat = datas.GetResult(0, 0, 10);
+
+            int result = datas.GetResult(10, 12);
+
+            
         }
+        [TestMethod]
+        public void UnderFeatureTest()
+        {
+            ModelData datas = new ModelData();
+            int dice;
+            int testValue = 9;
+            bool ok = datas.UnderFeature(out dice);
+
+            Assert.AreEqual(dice <=testValue, ok);
+
+        }
+
     }
 }
